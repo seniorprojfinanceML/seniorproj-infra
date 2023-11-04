@@ -7,6 +7,5 @@ testconnect.py
 fignore
 pass.txt
 fignore\pass.txt
-terraform*
 terraformSL2_accessKeys.csv
 fignore\terraformSL2_accessKeys.csv
