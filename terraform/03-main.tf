@@ -6,8 +6,8 @@ resource "aws_security_group" "cap_aws_sg" {
   name = "postgresql-rds-sg"
 
   ingress {
-    from_port   = 5432
-    to_port     = 5432
+    from_port = 5432
+    to_port   = 5432
     # from_port   = 0
     # to_port     = 65535
     protocol    = "TCP"
@@ -15,8 +15,8 @@ resource "aws_security_group" "cap_aws_sg" {
   }
 
   egress {
-    from_port   = 5432
-    to_port     = 5432
+    from_port = 5432
+    to_port   = 5432
     # from_port   = 0
     # to_port     = 65535
     protocol    = "TCP"

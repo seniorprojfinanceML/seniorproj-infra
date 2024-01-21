@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "mlflow_bucket" {
-  bucket = "mlflow-bucket-test-1012-seniorproj"  # Change this to your desired bucket name
+  bucket = "mlflow-bucket-test-1012-seniorproj" # Change this to your desired bucket name
 
   tags = {
     Name = "mlflow_test"

@@ -22,7 +22,7 @@ resource "aws_dynamodb_table" "etl-stock" {
   }
 
   tags = {
-    Name        = "etl-stock"
+    Name = "etl-stock"
   }
 }
 
