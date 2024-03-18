@@ -27,7 +27,7 @@ resource "aws_security_group" "cap_aws_sg" {
 resource "aws_db_instance" "seniorproj_db" {
   identifier              = "maindb-seniorproj"
   engine                  = "postgres"
-  engine_version          = "14.7"
+  engine_version          = "14.10"
   instance_class          = "db.t3.micro"
   db_name                 = "seniorproj_maindb"
   username                = var.db_username
