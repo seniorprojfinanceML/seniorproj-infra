@@ -12,6 +12,7 @@ provider "digitalocean" {
 }
 
 # try playing and see template here in /v2/apps
+# https://docs.digitalocean.com/reference/api/api-try-it-now/
 
 resource "digitalocean_app" "bento_app" {
   spec {
