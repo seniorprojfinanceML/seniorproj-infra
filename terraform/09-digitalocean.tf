@@ -11,10 +11,12 @@ provider "digitalocean" {
   token = var.do_credentials
 }
 
+# try playing and see template here in /v2/apps
+
 resource "digitalocean_app" "bento_app" {
   spec {
     name   = "bento-app-spec-terraform"
-    region = "sgp1"
+    region = "sgp"
 
     env {
       key   = "AWS_ACCESS_KEY_ID"
@@ -32,12 +34,16 @@ resource "digitalocean_app" "bento_app" {
       type  = "GENERAL"
     }
 
+    alert {
+      rule = "DEPLOYMENT_FAILED"
+    }
+
     service {
       name = "bento-service-image"
       image {
         registry_type = "DOCR"
-        repository    = "registry.digitalocean.com/test-ml-container"
-        tag           = "c6prhswwdw76lc4z:latest"
+        repository    = "c6prhswwdw76lc4z"
+        tag           = "latest"
         deploy_on_push {
           enabled = true
         }
