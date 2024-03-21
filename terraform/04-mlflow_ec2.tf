@@ -11,7 +11,7 @@ data "aws_subnets" "default" {
 
 resource "aws_security_group" "mlflow_test_sg" {
   name        = "mlflow_test_sg"
-  description = "Security group that allows SSH and TCP port 5000"
+  description = "Example security group that allows SSH and TCP port 5000"
   vpc_id      = data.aws_vpc.default.id
 
   ingress {
