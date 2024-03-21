@@ -55,3 +55,66 @@ resource "digitalocean_app" "bento_app" {
     }
   }
 }
+
+resource "digitalocean_droplet" "miscellaneous_instance" {
+  image      = "ubuntu-23-10-x64"
+  name       = "ubuntu-s-2vcpu-4gb-sgp1-01-in-terraform-1"
+  region     = "sgp1"
+  size       = "s-2vcpu-4gb"
+  monitoring = true
+}
+
+resource "digitalocean_firewall" "miscellaneous_instance_fw" {
+  name = "instance-fw-terraform"
+
+  droplet_ids = [
+    digitalocean_droplet.miscellaneous_instance.id,
+  ]
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "22"
+    source_addresses = ["0.0.0.0/0"]
+  }
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "80"
+    source_addresses = ["0.0.0.0/0"]
+  }
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "443"
+    source_addresses = ["0.0.0.0/0"]
+  }
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "6789"
+    source_addresses = ["0.0.0.0/0"]
+  }
+
+  inbound_rule {
+    protocol         = "tcp"
+    port_range       = "8501"
+    source_addresses = ["0.0.0.0/0"]
+  }
+
+  outbound_rule {
+    protocol              = "tcp"
+    port_range            = "1-65535"
+    destination_addresses = ["0.0.0.0/0"]
+  }
+
+  outbound_rule {
+    protocol              = "udp"
+    port_range            = "1-65535"
+    destination_addresses = ["0.0.0.0/0"]
+  }
+
+  outbound_rule {
+    protocol              = "icmp"
+    destination_addresses = ["0.0.0.0/0"]
+  }
+}
