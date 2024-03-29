@@ -119,3 +119,9 @@ resource "digitalocean_firewall" "miscellaneous_instance_fw" {
     destination_addresses = ["0.0.0.0/0"]
   }
 }
+
+resource "digitalocean_container_registry" "image_registry_digio" {
+  name                   = "test-2"
+  subscription_tier_slug = "starter"
+  region                 = "sgp1"
+}
