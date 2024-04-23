@@ -7,6 +7,15 @@ variable "db_password" {
   type        = string
 }
 
+variable "db_name" {
+  description = "The name for the database"
+  type        = string
+}
+variable "db_url" {
+  description = "The url for the database"
+  type        = string
+}
+
 variable "s3_access" {
   description = "s3_access"
   type        = string
@@ -25,4 +34,11 @@ variable "mlflow_url" {
 variable "do_credentials" {
   description = "do_credentials"
   type        = string
+}
+
+variable "cron_lambda_schedules" {
+  default = {
+    midnight = "cron(0 0 * * ? *)"
+    noon     = "cron(0 12 * * ? *)"
+  }
 }
