@@ -28,7 +28,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
           "logs:CreateLogStream",
           "logs:PutLogEvents"
         ],
-        Resource = "arn:aws:logs:*:*:*"
+        Resource = "arn:aws:logs:ap-southeast-1:*:*"
         Effect   = "Allow"
       },
     ]
@@ -44,8 +44,8 @@ resource "aws_lambda_function" "extract_func" {
   role             = aws_iam_role.lambda_role.arn
   timeout          = 15
   layers           = ["arn:aws:lambda:ap-southeast-1:937748925159:layer:senior-project-etl-layer:6"]
-  filename         = "insert-crypto-data-daily.zip"
-  source_code_hash = filebase64sha256("insert-crypto-data-daily.zip")
+  filename         = "insert-crypto-data-daily-edit-fortest.zip"
+  source_code_hash = filebase64sha256("insert-crypto-data-daily-edit-fortest.zip")
 
   environment {
     variables = {
